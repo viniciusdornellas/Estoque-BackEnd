@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Estoque</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<h1>Estoque</h1>
+						<p>Controle de estoque dos itens<br /> </p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#" onclick="loadContent('adc.html')" class="active">Adicionar</a></li>
+							<li><a href="#" onclick="loadContent('att.html')">Atualizar</a></li>
+							<li><a href="#" onclick="loadContent('del.html')">Deletar</a></li>
+							<li><a href="#" onclick="loadContent('list.html')">Listar</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction 
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Ipsum sed adipiscing</h2>
+										</header>
+										<p>Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna
+										adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus.
+										Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
+										<ul class="actions">
+											<li><a href="generic.html" class="button">Learn More</a></li>
+										</ul>
+									</div>
+									<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+								</div>
+							</section>-->
+						<p></p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+			function loadContent(page) {
+				var content = document.getElementById('main');
+				var xhr = new XMLHttpRequest();
+		  
+				xhr.onreadystatechange = function() {
+				  if (xhr.readyState === 4 && xhr.status === 200) {
+					content.innerHTML = xhr.responseText;
+				  }
+				};
+		  
+				xhr.open('GET', page, true);
+				xhr.send();
+			  }
+			</script>
+
+	</body>
+</html>
