@@ -6,10 +6,10 @@ let Item = new Schema({
     type: String
   },
   amount: {
-    type: String
+    type: Number
   },
   brand: {
-    type: Number
+    type: String
   }
 },{
     collection: 'item'

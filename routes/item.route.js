@@ -1,15 +1,18 @@
 const express = require('express');
 const app = express();
 const itemRoutes = express.Router();
+const mongoose = require('mongoose');
 
 let Item = require('../model/item');
 
 // api to add item
-userRoutes.route('/add').post(function (req, res) {
+itemRoutes.route('/add').post(function (req, res) {
+  console.log("Chegou aqui!")
   let item = new Item(req.body);
   item.save()
   .then(item => {
     res.status(200).json({'status': 'success','mssg': 'item added successfully'});
+    console.log('ID do item', item._id)
   })
   .catch(err => {
     res.status(409).send({'status': 'failure','mssg': 'unable to save to database'});
@@ -17,16 +20,24 @@ userRoutes.route('/add').post(function (req, res) {
 });
 
 // api to get itens
-itemRoutes.route('/').get(function (req, res) {
-    Item.find(function (err, itens){
+itemRoutes.route('/list').get(function (req, res) {
+    /* Item.find(function (err, itens){
     if(err){
       res.status(400).send({'status': 'failure','mssg': 'Something went wrong'});
     }
     else {
       res.status(200).json({'status': 'success','itens': itens});
-    }
+    } */
+    Item.find({})
+    .exec()
+    .then(itens => {
+      res.status(200).json(itens);
+    })
+    .catch(err => {
+      console.error('Erro ao listar itens:', err);
+      res.status(500).json({ error: 'Erro ao listar itens' });
+    });
   });
-});
 
 // api to get item
 itemRoutes.route('/item/:id').get(function (req, res) {
